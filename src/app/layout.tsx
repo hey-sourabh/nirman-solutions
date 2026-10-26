@@ -1,6 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -15,22 +21,27 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Nirman Solutions | Architecture & Luxury Interior Design",
+  title: "Nirman Site Solutions | Architecture, Design & Construction",
   description:
-    "Transforming spaces into timeless experiences. Nirman Solutions delivers bespoke architectural blueprints, sustainable construction planning, and luxury interior design.",
+    "Design • Plan • Build • Project Solutions. Nirman Site Solutions delivers bespoke architectural blueprints, sustainable construction planning, and luxury interior design.",
   keywords: [
+    "Nirman Site Solutions",
     "Architecture Studio",
+    "Design Plan Build",
+    "Construction Solutions",
     "Interior Design",
-    "Nirman Solutions",
     "Luxury Residential",
     "Commercial Architecture",
-    "Sustainable Masterplanning",
   ],
-  authors: [{ name: "Nirman Solutions" }],
+  authors: [{ name: "Nirman Site Solutions" }],
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
-    title: "Nirman Solutions | Architecture & Luxury Interior Design",
+    title: "Nirman Site Solutions | Architecture & Construction",
     description:
-      "Crafting spaces of timeless distinction. Discover bespoke architectural engineering and contemporary interior styling.",
+      "Design • Plan • Build • Project Solutions. Crafting spaces of timeless distinction.",
     type: "website",
     locale: "en_US",
   },
@@ -42,8 +53,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${outfit.variable} dark`}>
-      <body className="min-h-screen bg-[#0d0f12] text-zinc-100 font-sans antialiased selection:bg-[#c6a676] selection:text-black">
+    <html lang="en" className={`${plusJakarta.variable} ${outfit.variable} light`}>
+      <body className="min-h-screen bg-[#FAF8F5] text-[#16191D] font-sans antialiased selection:bg-[#C6A676] selection:text-white">
         {children}
       </body>
     </html>

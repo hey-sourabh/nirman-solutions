@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, MapPin, Maximize2 } from "lucide-react";
+import { ArrowUpRight, MapPin, Maximize2, Check } from "lucide-react";
+import Reveal from "@/components/Reveal";
+import ImageShutter, { ShutterType } from "@/components/ImageShutter";
 
 interface Project {
   id: string;
@@ -14,6 +16,8 @@ interface Project {
   image: string;
   description: string;
   features: string[];
+  gridClass: string;
+  aspectClass: string;
 }
 
 const projects: Project[] = [
@@ -25,8 +29,10 @@ const projects: Project[] = [
     area: "8,400 sq.ft",
     year: "2026",
     image: "/images/hero.jpg",
-    description: "Cantilevered reinforced concrete villa with seamless indoor-outdoor infinity pool vistas, natural thermal insulation, and passive solar orientation.",
-    features: ["Infinity Reflecting Pool", "Triple-Glazed Minimalist Glass", "Geothermal Cooling"],
+    description: "Cantilevered reinforced concrete residence with seamless indoor-outdoor infinity pool vistas, natural thermal insulation, and passive solar orientation overlooking the Pacific ocean.",
+    features: ["Infinity Reflecting Pool", "Triple-Glazed Minimalist Glass", "Geothermal Cooling", "Cantilevered Living Deck"],
+    gridClass: "lg:col-span-8",
+    aspectClass: "aspect-[16/10] sm:aspect-[16/9]",
   },
   {
     id: "travertine-sanctuary",
@@ -37,7 +43,9 @@ const projects: Project[] = [
     year: "2025",
     image: "/images/interior.jpg",
     description: "Bespoke Japandi interior curation integrating hand-carved travertine stone, fluted walnut architectural joinery, and private Zen garden integration.",
-    features: ["Custom Boucle Furnishings", "Travertine Fireplace Wall", "Acoustic Fluted Oak"],
+    features: ["Custom Bouclé Furnishings", "Travertine Fireplace Wall", "Acoustic Fluted Oak", "Circadian Zen Courtyard"],
+    gridClass: "lg:col-span-4",
+    aspectClass: "aspect-[4/5]",
   },
   {
     id: "curvature-pavilion",
@@ -48,7 +56,9 @@ const projects: Project[] = [
     year: "2025",
     image: "/images/urban.jpg",
     description: "An iconic undulating lattice shell incorporating bronze louvers, rainwater harvesting canals, and public amphitheater landscaping.",
-    features: ["Parametric Timber Lattice", "Net-Zero Carbon Concrete", "Canal Water Cooling"],
+    features: ["Parametric Timber Lattice", "Net-Zero Carbon Concrete", "Canal Water Cooling", "Acoustic Auditorium Shell"],
+    gridClass: "lg:col-span-5",
+    aspectClass: "aspect-[4/3]",
   },
   {
     id: "nirman-studio-labs",
@@ -59,7 +69,9 @@ const projects: Project[] = [
     year: "2024",
     image: "/images/studio.jpg",
     description: "An adaptive-reuse industrial loft converted into a multi-tiered collaborative architectural research space, fabrication lab, and materials library.",
-    features: ["Daylight Optimization", "Model Prototyping Workshop", "Biophilic Terraces"],
+    features: ["Daylight Optimization", "Model Prototyping Workshop", "Biophilic Terraces", "Solar Microgrid"],
+    gridClass: "lg:col-span-7",
+    aspectClass: "aspect-[16/10]",
   },
 ];
 
@@ -75,128 +87,153 @@ export default function ProjectsSection() {
       : projects.filter((p) => p.category === selectedCategory);
 
   return (
-    <section id="projects" className="py-24 md:py-32 bg-[#0a0c0e] relative border-t border-white/5">
+    <section id="projects" className="py-24 md:py-32 bg-[#FAF8F5] relative overflow-hidden border-t border-black/[0.06]">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
+        
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
-          <div className="space-y-3">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#c6a676]">
-              Portfolio Showcase
-            </span>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
-              Selected Works & Architectural Commissions
-            </h2>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+          <div className="space-y-4">
+            <Reveal animation="slide-down" delay={100}>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#A8824C]/30 bg-white shadow-sm text-xs font-mono tracking-widest uppercase text-[#926E3A]">
+                <span>Portfolio Showcase</span>
+              </div>
+            </Reveal>
+
+            <Reveal animation="slide-up" delay={200}>
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-light text-[#16191D] tracking-tight">
+                Selected Works & Architectural Commissions
+              </h2>
+            </Reveal>
           </div>
 
-          {/* Filter Pills */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-xs font-medium tracking-wider transition-all duration-300 ${
-                  selectedCategory === category
-                    ? "bg-[#c6a676] text-[#0d0f12] shadow-lg shadow-[#c6a676]/20 font-semibold"
-                    : "bg-white/5 text-zinc-400 hover:text-white hover:bg-white/10 border border-white/5"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+          {/* Filter Pills with Slide-Left */}
+          <Reveal animation="slide-left" delay={200}>
+            <div className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 rounded-full text-xs font-mono tracking-wider uppercase transition-all duration-300 ${
+                    selectedCategory === category
+                      ? "bg-[#16191D] text-white shadow-md font-semibold"
+                      : "bg-white text-[#5E6670] hover:text-[#16191D] hover:bg-stone-50 border border-black/[0.08]"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </Reveal>
         </div>
 
-        {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="group glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1.5 flex flex-col"
-            >
-              {/* Image Frame */}
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-900">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-108"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f12] via-transparent to-transparent opacity-80" />
-
-                {/* Category Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full text-[11px] font-mono tracking-wider uppercase bg-[#0d0f12]/80 backdrop-blur-md text-[#c6a676] border border-[#c6a676]/30">
-                    {project.category}
-                  </span>
-                </div>
-
-                {/* Inspect Button */}
-                <button
-                  onClick={() => setActiveProject(project)}
-                  className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 hover:bg-[#c6a676] text-white hover:text-black flex items-center justify-center backdrop-blur-md transition-colors"
-                  aria-label={`View details for ${project.title}`}
+        {/* Asymmetric Staggered Magazine Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {filteredProjects.map((project, idx) => (
+            <div key={project.id} className={project.gridClass}>
+              <Reveal animation="slide-up" delay={150 * (idx + 1)}>
+                <div
+                  className="group bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1.5 border border-black/[0.08] hover:border-[#A8824C]/50 shadow-md hover:shadow-2xl flex flex-col"
                 >
-                  <Maximize2 className="w-4 h-4" />
-                </button>
-              </div>
+                  {/* Image Frame with Shutter Reveal */}
+                  <div className={`relative ${project.aspectClass} w-full overflow-hidden bg-stone-100`}>
+                    <ImageShutter
+                      shutterType={
+                        (["curtain-up", "split-vertical", "louvers", "curtain-right"] as ShutterType[])[
+                          idx % 4
+                        ]
+                      }
+                      overlayColor="bg-[#16191D]"
+                      className="w-full h-full absolute inset-0"
+                    >
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 60vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 opacity-80" />
+                    </ImageShutter>
 
-              {/* Content Block */}
-              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-4">
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-xs text-zinc-400 font-mono">
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[#c6a676]" />
-                      {project.location}
-                    </span>
-                    <span>{project.area} • {project.year}</span>
-                  </div>
-                  <h3 className="font-heading text-xl sm:text-2xl font-medium text-white tracking-tight group-hover:text-[#c6a676] transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-zinc-300 font-light leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Feature Tags & Action */}
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.features.map((feature, i) => (
-                      <span
-                        key={i}
-                        className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-white/5 text-zinc-400"
-                      >
-                        {feature}
+                    {/* Top Badge Overlay */}
+                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                      <span className="px-3 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase bg-white/95 backdrop-blur-md text-[#926E3A] border border-black/10 font-medium shadow-sm">
+                        {project.category}
                       </span>
-                    ))}
+
+                      <button
+                        onClick={() => setActiveProject(project)}
+                        className="w-9 h-9 rounded-full bg-white/90 hover:bg-[#16191D] text-[#16191D] hover:text-white flex items-center justify-center backdrop-blur-md transition-colors shadow-sm"
+                        aria-label={`Inspect ${project.title}`}
+                      >
+                        <Maximize2 className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    {/* Bottom info banner on image */}
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white font-mono">
+                      <span className="flex items-center gap-1.5 bg-black/60 px-2.5 py-1 rounded backdrop-blur-sm">
+                        <MapPin className="w-3.5 h-3.5 text-[#C6A676]" />
+                        {project.location}
+                      </span>
+                      <span className="bg-black/60 px-2.5 py-1 rounded backdrop-blur-sm">
+                        {project.area} • {project.year}
+                      </span>
+                    </div>
                   </div>
-                  <button
-                    onClick={() => setActiveProject(project)}
-                    className="flex items-center gap-1 text-xs font-semibold text-[#c6a676] hover:text-[#d8ba8e] uppercase tracking-wider ml-2 flex-shrink-0"
-                  >
-                    <span>Details</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
+
+                  {/* Content Card Body */}
+                  <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
+                    <div className="space-y-2">
+                      <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#16191D] tracking-tight group-hover:text-[#A8824C] transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-[#5E6670] font-light leading-relaxed line-clamp-2">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* Features & Action */}
+                    <div className="pt-4 border-t border-black/[0.06] flex items-center justify-between">
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.features.slice(0, 3).map((feature, i) => (
+                          <span
+                            key={i}
+                            className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#FAF8F5] text-[#5E6670] border border-black/[0.04]"
+                          >
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+
+                      <button
+                        onClick={() => setActiveProject(project)}
+                        className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-[#A8824C] hover:text-[#16191D] ml-2 flex-shrink-0"
+                      >
+                        <span>Inspect</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
           ))}
         </div>
 
-        {/* Modal Dialog for Project Details */}
+        {/* Modal Dialog for Project Details (Light Theme) */}
         {activeProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <div className="relative max-w-2xl w-full bg-[#13171e] border border-white/20 rounded-2xl overflow-hidden shadow-2xl p-6 sm:p-8 space-y-6 animate-in fade-in zoom-in-95 duration-200">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in">
+            <div className="relative max-w-2xl w-full bg-white border border-black/15 rounded-2xl overflow-hidden shadow-2xl p-6 sm:p-8 space-y-6 animate-scale-up">
               <div className="flex items-start justify-between">
                 <div>
-                  <span className="text-xs font-mono uppercase text-[#c6a676] tracking-widest">
+                  <span className="text-xs font-mono uppercase text-[#A8824C] tracking-widest font-semibold">
                     {activeProject.category}
                   </span>
-                  <h3 className="font-heading text-2xl sm:text-3xl font-medium text-white mt-1">
+                  <h3 className="font-heading text-2xl sm:text-3xl font-medium text-[#16191D] mt-1">
                     {activeProject.title}
                   </h3>
-                  <div className="flex items-center gap-4 text-xs text-zinc-400 mt-2 font-mono">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs text-[#5E6670] mt-2 font-mono">
                     <span>{activeProject.location}</span>
                     <span>•</span>
                     <span>{activeProject.area}</span>
@@ -206,13 +243,13 @@ export default function ProjectsSection() {
                 </div>
                 <button
                   onClick={() => setActiveProject(null)}
-                  className="text-zinc-400 hover:text-white p-2 rounded-lg bg-white/5 hover:bg-white/10"
+                  className="text-[#5E6670] hover:text-[#16191D] p-2 rounded-lg bg-stone-100 hover:bg-stone-200 text-sm font-mono transition-colors"
                 >
                   ✕
                 </button>
               </div>
 
-              <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden">
+              <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden shadow-inner">
                 <Image
                   src={activeProject.image}
                   alt={activeProject.title}
@@ -222,32 +259,33 @@ export default function ProjectsSection() {
               </div>
 
               <div className="space-y-4">
-                <p className="text-sm text-zinc-300 leading-relaxed">
+                <p className="text-sm text-[#4B535D] leading-relaxed font-light">
                   {activeProject.description}
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
                   {activeProject.features.map((feat, i) => (
                     <div
                       key={i}
-                      className="p-3 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-zinc-200 text-center"
+                      className="p-2.5 rounded-lg bg-[#FAF8F5] border border-black/[0.06] text-xs font-mono text-[#16191D] flex items-center gap-2"
                     >
-                      {feat}
+                      <Check className="w-3.5 h-3.5 text-[#A8824C]" />
+                      <span>{feat}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-white/10 flex justify-end gap-3">
+              <div className="pt-4 border-t border-black/[0.08] flex justify-end gap-3">
                 <button
                   onClick={() => setActiveProject(null)}
-                  className="px-5 py-2 text-xs uppercase tracking-wider text-zinc-400 hover:text-white"
+                  className="px-5 py-2 text-xs uppercase tracking-wider text-[#5E6670] hover:text-[#16191D]"
                 >
                   Close
                 </button>
                 <a
                   href="#contact"
                   onClick={() => setActiveProject(null)}
-                  className="px-6 py-2.5 text-xs uppercase tracking-widest font-semibold bg-[#c6a676] text-black rounded-full hover:bg-[#d8ba8e]"
+                  className="px-6 py-2.5 text-xs uppercase tracking-widest font-semibold bg-[#16191D] text-white rounded-full hover:bg-[#A8824C] transition-colors shadow-md"
                 >
                   Commission Similar Project
                 </a>
@@ -255,6 +293,7 @@ export default function ProjectsSection() {
             </div>
           </div>
         )}
+
       </div>
     </section>
   );
