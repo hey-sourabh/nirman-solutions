@@ -22,22 +22,20 @@ export default function ContactSection() {
 
   const offices = [
     {
-      city: "Mumbai Atelier",
-      address: "Tower 4, Maker Maxity, BKC, Mumbai 400051",
-      phone: "+91 79097 90983",
-      hours: "Mon – Sat: 9:30 AM – 7:00 PM IST",
+      city: "Indore Studio & Head Office",
+      badge: "Headquarters",
+      address: "Veda Business Park, Bhawarkua, Indore, MP 452001",
+      phone: "+91 91118 11918",
+      tel: "+919111811918",
+      hours: "Mon – Sat: 9:30 AM – 7:30 PM IST",
     },
     {
-      city: "New Delhi Design Studio",
-      address: "One Style Mile, Mehrauli, New Delhi 110030",
-      phone: "+91 (0) 11 4102 9800",
-      hours: "Mon – Sat: 10:00 AM – 6:30 PM IST",
-    },
-    {
-      city: "London Gallery",
-      address: "28 Berkeley Square, Mayfair, London W1J 6EN",
-      phone: "+44 (0) 20 7946 0912",
-      hours: "Mon – Fri: 9:00 AM – 6:00 PM GMT",
+      city: "On-Site Consultation & Supervision",
+      badge: "Pan-India Projects",
+      address: "Architectural Planning, 3D Elevation & Turnkey Construction Across India",
+      phone: "+91 91118 11918",
+      tel: "+919111811918",
+      hours: "Mon – Sat: 9:00 AM – 8:00 PM IST",
     },
   ];
 
@@ -57,8 +55,7 @@ export default function ContactSection() {
                   Let&apos;s Shape Something Enduring
                 </h2>
                 <p className="text-sm sm:text-base text-[#5E6670] font-light leading-relaxed">
-                  Whether envisioning a private coastal sanctuary or a landmark cultural pavilion, our
-                  principals are available for confidential consultations worldwide.
+                  Whether envisioning a private luxury villa, turnkey commercial space, or bespoke interior design, our team is ready to consult with you in Indore or on-site anywhere.
                 </p>
               </div>
 
@@ -71,28 +68,28 @@ export default function ContactSection() {
                   >
                     <div className="flex items-center justify-between">
                       <span className="font-medium text-[#16191D] text-sm">{office.city}</span>
-                      <span className="text-[10px] font-mono text-[#926E3A] uppercase font-semibold">In-Person & Virtual</span>
+                      <span className="text-[10px] font-mono text-[#926E3A] uppercase font-semibold">{office.badge}</span>
                     </div>
                     <p className="text-xs text-[#5E6670] flex items-start gap-1.5">
                       <MapPin className="w-3.5 h-3.5 text-[#A8824C] flex-shrink-0 mt-0.5" />
                       <span>{office.address}</span>
                     </p>
                     <div className="flex items-center gap-4 text-xs text-[#8C95A0] pt-1 font-mono">
-                      <span className="flex items-center gap-1 text-[#4B535D]">
+                      <a href={`tel:${office.tel}`} className="flex items-center gap-1.5 text-[#4B535D] hover:text-[#A8824C] transition-colors font-medium">
                         <Phone className="w-3 h-3 text-[#A8824C]" />
                         {office.phone}
-                      </span>
+                      </a>
                     </div>
                   </div>
                 ))}
               </div>
 
               <div className="p-4 rounded-xl border border-black/[0.08] bg-white shadow-sm flex items-center gap-3 mt-4">
-                <Mail className="w-5 h-5 text-[#A8824C]" />
+                <Mail className="w-5 h-5 text-[#A8824C] flex-shrink-0" />
                 <div className="text-xs">
-                  <span className="text-[#5E6670] block">General & Press Inquiries:</span>
-                  <a href="mailto:atelier@nirmansolutions.com" className="text-[#16191D] hover:text-[#A8824C] font-mono font-medium">
-                    atelier@nirmansolutions.com
+                  <span className="text-[#5E6670] block">Direct Email Inquiries:</span>
+                  <a href="mailto:nirmansitesolutions@gmail.com" className="text-[#16191D] hover:text-[#A8824C] font-mono font-medium break-all">
+                    nirmansitesolutions@gmail.com
                   </a>
                 </div>
               </div>

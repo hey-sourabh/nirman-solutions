@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Globe, Check } from "lucide-react";
+import { ArrowRight, Globe, Check, MapPin, Phone, Mail } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 export default function Footer() {
@@ -46,9 +46,28 @@ export default function Footer() {
               </Link>
 
               <p className="text-xs text-[#9EA7B3] font-light leading-relaxed max-w-sm">
-                An international architectural atelier crafting distinguished residences, bespoke
-                interiors, and monumental public spaces with rigorous material integrity.
+                We design and build modern homes, beautiful interiors, and commercial spaces. From initial floor plans to complete construction, we turn your ideas into reality.
               </p>
+
+              {/* Direct Studio Contact Details */}
+              <div className="space-y-2 text-xs text-[#C4CDD7] pt-1">
+                <div className="flex items-start gap-2.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#A8824C] flex-shrink-0 mt-0.5" />
+                  <span>Veda Business Park, Bhawarkua, Indore 452001, MP</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <Phone className="w-3.5 h-3.5 text-[#A8824C] flex-shrink-0" />
+                  <a href="tel:+919111811918" className="hover:text-[#A8824C] transition-colors font-mono">
+                    +91 91118 11918
+                  </a>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <Mail className="w-3.5 h-3.5 text-[#A8824C] flex-shrink-0" />
+                  <a href="mailto:nirmansitesolutions@gmail.com" className="hover:text-[#A8824C] transition-colors font-mono break-all">
+                    nirmansitesolutions@gmail.com
+                  </a>
+                </div>
+              </div>
 
               <div className="flex items-center gap-3 pt-2">
                 <a
@@ -76,7 +95,7 @@ export default function Footer() {
                 <a
                   href="#"
                   className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#A8824C] text-[#C4CDD7] hover:text-[#16191D] flex items-center justify-center transition-colors"
-                  aria-label="Global Portfolio"
+                  aria-label="Website"
                 >
                   <Globe className="w-4 h-4" />
                 </a>
@@ -91,76 +110,76 @@ export default function Footer() {
               <ul className="space-y-2.5 text-xs">
                 <li>
                   <a href="#projects" className="hover:text-[#A8824C] transition-colors">
-                    Coastal Residences
+                    Residential Homes
                   </a>
                 </li>
                 <li>
                   <a href="#projects" className="hover:text-[#A8824C] transition-colors">
-                    Bespoke Interiors
+                    Interior Design
                   </a>
                 </li>
                 <li>
                   <a href="#projects" className="hover:text-[#A8824C] transition-colors">
-                    Urban Landmarks
+                    Commercial Spaces
                   </a>
                 </li>
                 <li>
                   <a href="#projects" className="hover:text-[#A8824C] transition-colors">
-                    Hospitality Estates
+                    Renovations
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Quick Links: Disciplines */}
+            {/* Quick Links: Services */}
             <div className="lg:col-span-2 space-y-4">
               <h4 className="text-xs font-mono uppercase tracking-widest text-white">
-                Capabilities
+                Our Services
               </h4>
               <ul className="space-y-2.5 text-xs">
                 <li>
                   <a href="#services" className="hover:text-[#A8824C] transition-colors">
-                    Architectural Blueprints
+                    House Plans & 3D Design
                   </a>
                 </li>
                 <li>
                   <a href="#services" className="hover:text-[#A8824C] transition-colors">
-                    Interior Architecture
+                    Interior Design & Decor
                   </a>
                 </li>
                 <li>
                   <a href="#services" className="hover:text-[#A8824C] transition-colors">
-                    Parametric Facades
+                    Structural Engineering
                   </a>
                 </li>
                 <li>
                   <a href="#services" className="hover:text-[#A8824C] transition-colors">
-                    Turnkey Execution
+                    Complete Construction
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Newsletter: Architectural Journal */}
+            {/* Newsletter */}
             <div className="lg:col-span-4 space-y-4">
               <h4 className="text-xs font-mono uppercase tracking-widest text-white">
-                The Nirman Journal
+                Stay Updated
               </h4>
               <p className="text-xs text-[#9EA7B3] font-light leading-relaxed">
-                Curated monographs, materiality essays, and early previews of ongoing commissions delivered quarterly.
+                Subscribe to get modern home ideas, construction tips, and updates on our latest projects.
               </p>
 
               {subscribed ? (
                 <div className="flex items-center gap-2 p-3 rounded-xl bg-white/5 border border-[#A8824C]/30 text-xs text-[#A8824C]">
                   <Check className="w-4 h-4" />
-                  <span>You are subscribed to The Nirman Journal.</span>
+                  <span>Thank you! You are subscribed to our newsletter.</span>
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} className="flex gap-2">
                   <input
                     type="email"
                     required
-                    placeholder="Enter email address"
+                    placeholder="Enter your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs text-white placeholder-stone-400 focus:outline-none focus:border-[#A8824C]"
@@ -181,12 +200,12 @@ export default function Footer() {
           {/* Bottom Bar */}
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#8C95A0] gap-4">
             <div>
-              &copy; 2026 Nirman Site Solutions LLP. All architectural rights reserved.
+              &copy; 2026 Nirman Site Solutions. All rights reserved.
             </div>
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6 text-[11px] font-mono">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
               <span>•</span>
-              <a href="#" className="hover:text-white transition-colors">Terms of Commission</a>
+              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
               <span>•</span>
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

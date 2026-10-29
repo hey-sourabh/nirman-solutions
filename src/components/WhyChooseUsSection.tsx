@@ -1,6 +1,7 @@
 "use client";
 
-import { Compass, Eye, ShieldCheck, Ruler, ArrowUpRight, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { Compass, Eye, ShieldCheck, Ruler, ArrowUpRight, Sparkles, CheckCircle2 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 export default function WhyChooseUsSection() {
@@ -18,6 +19,7 @@ export default function WhyChooseUsSection() {
       desc: "Step inside your architectural sanctuary before breaking ground. Experience diurnal sunlight shifts, acoustics, and materials in real time.",
       tag: "Spatial Clarity",
       span: "md:col-span-1 lg:col-span-4",
+      image: "/images/gallery/nirman-signature-villa.jpg",
     },
     {
       icon: Compass,
@@ -29,10 +31,14 @@ export default function WhyChooseUsSection() {
     {
       icon: ShieldCheck,
       title: "Turnkey Execution & Single Accountability",
-      desc: "From initial sketch to key handover, our dedicated project directors supervise every pour, joint, and bespoke millwork detail.",
+      desc: "From initial sketch to key handover, Er. Aman Parihar and our dedicated superintendents supervise every pour, joint, and bespoke millwork detail.",
       tag: "Zero-Compromise",
       span: "md:col-span-2 lg:col-span-8",
       featured: true,
+      gallery: [
+        { label: "Grand Interior Hall", src: "/images/gallery/grand-palace-interior.jpg" },
+        { label: "Multi-Storey Complex", src: "/images/gallery/kenneth-residency.jpg" },
+      ],
     },
     {
       icon: Sparkles,
@@ -40,6 +46,7 @@ export default function WhyChooseUsSection() {
       desc: "Direct partnerships with European stone quarries, heritage timber mills, and bronze artisans.",
       tag: "Artisanal",
       span: "md:col-span-1 lg:col-span-4",
+      image: "/images/gallery/modern-triplex-driveway.jpg",
     },
   ];
 
@@ -72,7 +79,7 @@ export default function WhyChooseUsSection() {
           <div className="lg:col-span-5">
             <Reveal animation="slide-up" delay={300}>
               <p className="text-sm sm:text-base text-[#5E6670] font-light leading-relaxed">
-                Nexel-inspired architectural discipline combines bold visionary aesthetics with rigorous engineering
+                Nirman Site Solutions combines bold architectural aesthetics with rigorous engineering
                 standards. We reject repetitive templates to build bespoke legacy spaces that appreciate in emotional and financial value.
               </p>
             </Reveal>
@@ -110,6 +117,29 @@ export default function WhyChooseUsSection() {
                           {item.desc}
                         </p>
                       </div>
+
+                      {/* Embedded Visual Gallery for Featured Cards */}
+                      {item.featured && item.gallery && (
+                        <div className="grid grid-cols-2 gap-3 pt-2">
+                          {item.gallery.map((g, gIdx) => (
+                            <div key={gIdx} className="relative aspect-[16/9] rounded-xl overflow-hidden border border-black/10 group/img bg-stone-100 shadow-sm">
+                              <Image src={g.src} alt={g.label} fill className="object-cover transition-transform duration-500 group-hover/img:scale-105" />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
+                              <span className="absolute bottom-1.5 left-2 text-[9px] font-mono text-white/90">
+                                {g.label}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Single preview image on regular cards */}
+                      {item.image && (
+                        <div className="relative aspect-[16/8] rounded-xl overflow-hidden border border-black/10 group/img bg-stone-100 shadow-sm mt-2">
+                          <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-500 group-hover/img:scale-105" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-70" />
+                        </div>
+                      )}
                     </div>
 
                     <div className="pt-6 mt-4 border-t border-black/[0.06] flex items-center justify-between">

@@ -21,28 +21,34 @@ export default function AboutSection() {
               <div className="relative w-10/12 sm:w-4/5 aspect-[4/5] rounded-2xl overflow-hidden border border-black/10 shadow-2xl bg-white group">
                 <ImageShutter shutterType="curtain-up" overlayColor="bg-[#16191D]" className="w-full h-full">
                   <Image
-                    src="/images/entryway.jpg"
-                    alt="Modern travertine architectural entryway"
+                    src="/images/gallery/grand-palace-interior.jpg"
+                    alt="Grand palace interior with sweeping marble stairs and chandelier"
                     fill
                     sizes="(max-width: 1024px) 85vw, 40vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </ImageShutter>
+                <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded text-[10px] font-mono text-white">
+                  Grand Palace Interior • Double Height
+                </div>
               </div>
 
               {/* Overlapping Secondary Image with Split Shutter Reveal */}
               <div className="absolute -bottom-6 right-2 sm:right-6 w-7/12 sm:w-1/2 aspect-[4/3] rounded-2xl overflow-hidden border-2 border-white shadow-2xl z-20 bg-white group">
                 <ImageShutter shutterType="split-vertical" overlayColor="bg-[#16191D]" delay={250} className="w-full h-full">
                   <Image
-                    src="/images/lounge.jpg"
-                    alt="Bespoke luxury living room lounge"
+                    src="/images/gallery/modern-triplex-driveway.jpg"
+                    alt="Modern 3-story luxury villa with car porch and fountain"
                     fill
                     sizes="(max-width: 1024px) 50vw, 25vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
                 </ImageShutter>
+                <div className="absolute bottom-2.5 left-2.5 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded text-[9px] font-mono text-white">
+                  Modern Triplex Villa
+                </div>
               </div>
 
               {/* Floating Metric 1: Positive Feedback */}
@@ -125,7 +131,7 @@ export default function AboutSection() {
                 {/* Direct Inquiries Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-black/[0.08]">
                   <a
-                    href="tel:+917909790983"
+                    href="tel:+919111811918"
                     className="p-4 rounded-xl bg-white border border-black/[0.08] shadow-sm flex items-center gap-3.5 transition-all duration-300 hover:border-[#A8824C]/60 hover:shadow-md group"
                   >
                     <div className="w-11 h-11 rounded-lg bg-[#A8824C]/15 border border-[#A8824C]/30 flex items-center justify-center text-[#A8824C] group-hover:scale-110 group-hover:bg-[#A8824C]/25 transition-all">
@@ -136,13 +142,13 @@ export default function AboutSection() {
                         Need Any Help?
                       </div>
                       <div className="text-sm font-semibold text-[#16191D] group-hover:text-[#A8824C] transition-colors">
-                        +91 79097 90983
+                        +91 91118 11918
                       </div>
                     </div>
                   </a>
 
                   <a
-                    href="mailto:atelier@nirmansolutions.com"
+                    href="mailto:nirmansitesolutions@gmail.com"
                     className="p-4 rounded-xl bg-white border border-black/[0.08] shadow-sm flex items-center gap-3.5 transition-all duration-300 hover:border-[#A8824C]/60 hover:shadow-md group"
                   >
                     <div className="w-11 h-11 rounded-lg bg-[#A8824C]/15 border border-[#A8824C]/30 flex items-center justify-center text-[#A8824C] group-hover:scale-110 group-hover:bg-[#A8824C]/25 transition-all">
@@ -150,10 +156,10 @@ export default function AboutSection() {
                     </div>
                     <div>
                       <div className="text-[11px] font-mono uppercase tracking-wider text-[#5E6670]">
-                        Email Atelier
+                        Email Us
                       </div>
-                      <div className="text-sm font-semibold text-[#16191D] group-hover:text-[#A8824C] transition-colors truncate max-w-[170px]">
-                        atelier@nirman.com
+                      <div className="text-xs sm:text-sm font-semibold text-[#16191D] group-hover:text-[#A8824C] transition-colors break-all">
+                        nirmansitesolutions@gmail.com
                       </div>
                     </div>
                   </a>
@@ -163,6 +169,71 @@ export default function AboutSection() {
           </div>
 
         </div>
+
+        {/* About Section Visual Gallery Strip */}
+        <Reveal animation="slide-up" delay={250}>
+          <div className="mt-16 pt-10 border-t border-black/[0.08]">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#926E3A] font-semibold">
+                  Architectural Gallery Showcase
+                </span>
+                <h3 className="font-heading text-lg sm:text-xl font-medium text-[#16191D]">
+                  Signature Built & Rendered Environments
+                </h3>
+              </div>
+              <span className="text-xs font-mono text-[#5E6670] hidden sm:inline">
+                Curated by Nirman Site Solutions
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                {
+                  title: "Nirman Signature Villa",
+                  tag: "Exterior Elevation",
+                  src: "/images/gallery/nirman-signature-villa.jpg",
+                },
+                {
+                  title: "Kenneth Residency Tower",
+                  tag: "Multi-Storey Complex",
+                  src: "/images/gallery/kenneth-residency.jpg",
+                },
+                {
+                  title: "Grand Palace Interior",
+                  tag: "Chandelier Living Hall",
+                  src: "/images/gallery/grand-palace-interior.jpg",
+                },
+                {
+                  title: "Modern Triplex Residence",
+                  tag: "Driveway & Fountain",
+                  src: "/images/gallery/modern-triplex-driveway.jpg",
+                },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-black/10 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 bg-stone-100"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90" />
+                  <div className="absolute bottom-2.5 left-2.5 right-2.5 text-white">
+                    <span className="text-[9px] font-mono uppercase tracking-wider text-[#C6A676] block">
+                      {item.tag}
+                    </span>
+                    <h4 className="text-xs font-medium line-clamp-1 group-hover:text-[#C6A676] transition-colors">
+                      {item.title}
+                    </h4>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

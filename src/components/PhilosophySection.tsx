@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Compass, Sparkles, Hammer, CheckCircle2 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
@@ -121,6 +122,48 @@ export default function PhilosophySection() {
             })}
           </div>
         </div>
+
+        {/* Process Transformation Gallery Strip */}
+        <Reveal animation="slide-up" delay={250}>
+          <div className="mb-14 p-6 sm:p-8 bg-white/70 backdrop-blur-md rounded-2xl border border-black/[0.08] shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-5 gap-2">
+              <div>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#926E3A] font-semibold">
+                  Visual Methodology in Action
+                </span>
+                <h3 className="font-heading text-lg sm:text-xl font-medium text-[#16191D]">
+                  From Permit Drafting to Photorealistic 3D Realization
+                </h3>
+              </div>
+              <span className="text-xs font-mono text-[#5E6670]">
+                All Projects by Nirman Site Solutions
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
+              {[
+                { step: "01. CAD Drafting", title: "Permit Floor Plans", img: "/images/blueprints/shubham-villa-p1.jpg" },
+                { step: "02. 3D Architecture", title: "Nirman Signature Villa", img: "/images/gallery/nirman-signature-villa.jpg" },
+                { step: "03. Interior Detailing", title: "Palace Chandelier Hall", img: "/images/gallery/grand-palace-interior.jpg" },
+                { step: "04. Multi-Tier Scale", title: "Kenneth Residency Tower", img: "/images/gallery/kenneth-residency.jpg" },
+                { step: "05. Final Handover", title: "Gated Residence & Cars", img: "/images/gallery/modern-triplex-facade.jpg" },
+              ].map((item, idx) => (
+                <div key={idx} className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-black/10 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-stone-100">
+                  <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-85" />
+                  <div className="absolute bottom-2 left-2 right-2 text-white">
+                    <span className="text-[8px] font-mono uppercase tracking-wider text-[#C6A676] block">
+                      {item.step}
+                    </span>
+                    <h4 className="text-[11px] font-medium line-clamp-1 group-hover:text-[#C6A676] transition-colors">
+                      {item.title}
+                    </h4>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
 
         {/* Studio Manifesto Banner with Slide-Up */}
         <Reveal animation="slide-up" delay={300}>

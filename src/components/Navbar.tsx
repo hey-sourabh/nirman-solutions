@@ -73,11 +73,11 @@ export default function Navbar() {
         {/* Action Button & Phone */}
         <div className="hidden lg:flex items-center gap-5">
           <a
-            href="tel:+917909790983"
+            href="tel:+919111811918"
             className="flex items-center gap-2 text-xs tracking-wider text-[#5E6670] hover:text-[#16191D] transition-colors font-mono"
           >
             <Phone className="w-3.5 h-3.5 text-[#A8824C]" />
-            <span>+91 79097 90983</span>
+            <span>+91 91118 11918</span>
           </a>
           
           <a
@@ -118,11 +118,11 @@ export default function Navbar() {
           </div>
           <div className="pt-4 flex flex-col gap-3">
             <a
-              href="tel:+917909790983"
+              href="tel:+919111811918"
               className="text-xs font-mono text-[#5E6670] flex items-center justify-center gap-2"
             >
               <Phone className="w-3.5 h-3.5 text-[#A8824C]" />
-              <span>+91 79097 90983</span>
+              <span>+91 91118 11918</span>
             </a>
             <a
               href="#contact"

@@ -48,7 +48,7 @@ const serviceItems: ServiceItem[] = [
       { label: "Standard Scale", value: "1:50 / 1:100" },
       { label: "Turnaround", value: "2 - 3 Weeks" },
     ],
-    image: "/images/blueprint.jpg",
+    image: "/images/blueprints/beachside-resort-p1.jpg",
   },
   {
     id: "structural",
@@ -69,7 +69,7 @@ const serviceItems: ServiceItem[] = [
       { label: "Material Grade", value: "Fe550D / High-Strength Concrete" },
       { label: "Verification", value: "Independent Peer Review" },
     ],
-    image: "/images/blueprint.jpg",
+    image: "/images/blueprints/shubham-villa-p1.jpg",
   },
   {
     id: "electrical",
@@ -90,7 +90,7 @@ const serviceItems: ServiceItem[] = [
       { label: "Efficiency", value: "100% LED Architectural" },
       { label: "Surge Protection", value: "Class 1 & 2 SPD" },
     ],
-    image: "/images/blueprint.jpg",
+    image: "/images/gallery/modern-triplex-driveway.jpg",
   },
   {
     id: "plumbing",
@@ -111,7 +111,7 @@ const serviceItems: ServiceItem[] = [
       { label: "Water Savings", value: "Up to 45% Harvested" },
       { label: "Pressure", value: "Multi-Zone Constant Boost" },
     ],
-    image: "/images/blueprint.jpg",
+    image: "/images/blueprints/aalam-manor-p1.jpg",
   },
   {
     id: "elevation",
@@ -132,7 +132,7 @@ const serviceItems: ServiceItem[] = [
       { label: "Cladding", value: "Rear-Ventilated Travertine" },
       { label: "Sun Study", value: "Equinox Solar Shading" },
     ],
-    image: "/images/hero.jpg",
+    image: "/images/gallery/nirman-signature-villa.jpg",
   },
   {
     id: "interior",
@@ -153,7 +153,7 @@ const serviceItems: ServiceItem[] = [
       { label: "Hardware", value: "Concealed Soft-Close Architectural" },
       { label: "Styling", value: "Turnkey Ready-to-Live" },
     ],
-    image: "/images/lounge.jpg",
+    image: "/images/gallery/grand-palace-interior.jpg",
   },
 ];
 
@@ -334,6 +334,48 @@ export default function ServicesSection() {
           </div>
 
         </div>
+
+        {/* Services Visual Gallery Strip */}
+        <Reveal animation="slide-up" delay={250}>
+          <div className="mt-16 pt-10 border-t border-black/[0.08]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
+              <div>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#926E3A] font-semibold">
+                  Disciplines in Action
+                </span>
+                <h3 className="font-heading text-lg sm:text-xl font-medium text-[#16191D]">
+                  Executed Engineering & Architectural Portfolio
+                </h3>
+              </div>
+              <span className="text-xs font-mono text-[#5E6670]">
+                All Renders & Plans by Er. Aman Parihar
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
+              {[
+                { title: "Signature Villa Facade", tag: "3D Elevation", img: "/images/gallery/nirman-signature-villa.jpg" },
+                { title: "Kenneth Residency", tag: "Commercial Tower", img: "/images/gallery/kenneth-residency.jpg" },
+                { title: "Palace Chandelier Hall", tag: "Interior Decor", img: "/images/gallery/grand-palace-interior.jpg" },
+                { title: "Triplex Villa Court", tag: "Driveway & Fountain", img: "/images/gallery/modern-triplex-driveway.jpg" },
+                { title: "Villa Gate & Cars", tag: "Front Entrance", img: "/images/gallery/modern-triplex-facade.jpg" },
+              ].map((item, idx) => (
+                <div key={idx} className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-black/10 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-stone-100">
+                  <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-85" />
+                  <div className="absolute bottom-2 left-2 right-2 text-white">
+                    <span className="text-[8px] font-mono uppercase tracking-wider text-[#C6A676] block">
+                      {item.tag}
+                    </span>
+                    <h4 className="text-[11px] font-medium line-clamp-1 group-hover:text-[#C6A676] transition-colors">
+                      {item.title}
+                    </h4>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
 
       </div>
     </section>
